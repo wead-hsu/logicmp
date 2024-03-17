@@ -1,0 +1,1 @@
+python -u -m main.train_semisupervised_sampling_dense -data_root data/uw_cse/ai/ -slice_dim 8 -batchsize 1024 -use_gcn 0 -embedding_size 128 -gcn_free_size 64 -load_method 0 -exp_folder exp -exp_name ai -device cuda

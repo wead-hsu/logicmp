@@ -1,0 +1,3 @@
+smoke(person)
+friend(person, person)
+cancer(person)

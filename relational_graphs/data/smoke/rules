@@ -1,0 +1,5 @@
+1.0 !friend(a, a) v !friend(a, a)
+1.0 !friend(a, b) v friend(b, a)
+1.0 !smoke(a) v !friend(a, b) v smoke(b)
+1.0 !smoke(a) v cancer(a)
+1.0 smoke(a) v !cancer(a)
