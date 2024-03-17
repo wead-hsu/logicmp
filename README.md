@@ -6,7 +6,10 @@ Note: The code for the relational graphs is included. Due to the privacy issues 
 
 # An Example: Transitivity rule in Document Images
 
+## Task Definition
 Task: Given the input image and input tokens, the task is to develop a function to predict whether two tokens coexist in a block. 
 Rule: If tokens $i$ and $j$ are in the same block and tokens $j$ and $k$ are also together, then tokens $i$ and $k$ should be in the same block. Formally, $\forall i, j, k: \mathtt{C}(i, j) \wedge \mathtt{C}(j, k) \implies \mathtt{C}(i, k)$.
 
 ![Encoding transitivity rule in image understanding task](figures/logicmp-case.jpeg).
+
+## Rules
