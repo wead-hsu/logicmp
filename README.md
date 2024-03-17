@@ -55,3 +55,49 @@ for i in range(niterations):
 
 As shown in this code, any first-order logic with **universal quantifier** can be converted into Einsum operations, turning previous MLN inference problem into forward tensor computations in milliseconds.
 
+# LogicMP utils: As a logic Language
+
+Here we provide a package to parse the first-order logic and automatically convert it into the LogicMP layer.
+
+### Import
+```
+from logicmp import *
+```
+
+### Define the fields and predicates
+```
+    # step 1: define the fields
+    token = Field('token', list(range(512)))    
+
+    # step 2: define the predicates
+    coexist = Predicate('coexist', [token, token])
+    name2predicate = {'coexist': coexist}
+```
+
+### Define the LogicMP
+```
+    # step 3: define the LogicMP
+    # rules in str
+    fstr = 'forall i: forall j: forall k: coexist(i, j) & coexist(i, k)  -> coexist(j, k)'
+    # parse the rules
+    ftree = pyparsing_parse(fstr)
+    print(ftree)
+    # using predefined classes
+    formula = construct(ftree, name2predicate)
+    print(formula)
+    res = is_conjunctive_normal_form(formula)
+    print(res)
+    # to CNF
+    formula = formula.apply()
+    print(formula)
+    res = is_conjunctive_normal_form(formula)
+    print(res)
+    logicmp = LogicMP(formula.clauses(), 5)
+```
+
+### Using LogicMP as a torch NN layer
+```
+    logits = LayoutLM(tokens) # logits: [batchsize, entities, entities, 2]
+    logits = LogicMP({'token': logits})
+    prob = torch.nn.softmax(logits, dim=-1)
+```
