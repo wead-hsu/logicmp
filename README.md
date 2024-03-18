@@ -15,7 +15,7 @@ Rule: If tokens $i$ and $j$ are in the same block and tokens $j$ and $k$ are als
 ## Tutorial: How to apply LogicMP in this example?
 
 ### Convert the rule to equivalent implications
-The transitivity rule is $\forall i, j, k: \mathtt{C}(i, j) \wedge \mathtt{C}(j, k) \implies \mathtt{C}(i, k)$. It is three equivalent implication statements (implications in short):
+The transitivity rule is $\forall i, j, k: \mathtt{C}(i, j) \wedge \mathtt{C}(j, k) \implies \mathtt{C}(i, k)$. It has three equivalent implication statements (implications in short):
 
 - $\forall i, j, k: \mathtt{C}(i, j) \wedge \mathtt{C}(j, k) \implies \mathtt{C}(i, k)$. It means that when (i, j) coexist and (j, k) coexist, then (i, k) coexist.
 - $\forall i, j, k: \neg \mathtt{C}(i, k) \wedge \mathtt{C}(j, k) \implies \neg \mathtt{C}(i, j)$. It means that when (i, k) coexist and (j, k) don't exist, then (i, j) don't coexist.
