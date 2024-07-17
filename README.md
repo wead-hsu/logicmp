@@ -27,9 +27,9 @@ The above three rules are equivalent. They are the same rule in three different 
 
 Each implication corresponds to a message passing:
 
-- msg_to_ik = einsum('bij,bjk->bik', Q[...,1], Q[...,1]) 
-- msg_to_ij = einsum('bjk,bik->bij', Q[...,1], Q[...,0])
-- msg_to_jk = einsum('bij,bik->bjk', Q[...,1], Q[...,0])
+- msg_to_ik =   einsum('bij,bjk->bik', Q[...,1], Q[...,1]) 
+- msg_to_ij = - einsum('bjk,bik->bij', Q[...,1], Q[...,0])
+- msg_to_jk = - einsum('bij,bik->bjk', Q[...,1], Q[...,0])
 
 where b stands for dimension batchsize, Q is the marginal of size [BatchSize, #Entities, #Entities, 2] (2 for binary classification).
 
